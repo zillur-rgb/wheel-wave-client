@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import About from "../Components/About/About";
 import Banner from "../Components/Banner/Banner";
 import NavMenu from "../Components/NavMenu/NavMenu";
 
@@ -10,6 +11,7 @@ const Homepage = () => {
         <NavMenu />
       </Row>
       <Banner />
+      <About />
     </Container>
   );
 };
