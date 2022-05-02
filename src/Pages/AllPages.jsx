@@ -6,6 +6,7 @@ import AboutUs from "./About";
 import ContactUs from "./ContacUs";
 import Blogs from "./Blogs";
 import Signup from "../Components/Signup/Signup";
+import Signin from "../Components/Signin/Signin";
 
 const AllPages = () => {
   return (
@@ -16,6 +17,7 @@ const AllPages = () => {
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/signin" element={<Signin />} />
     </Routes>
   );
 };
