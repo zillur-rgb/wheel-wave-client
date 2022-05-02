@@ -12,34 +12,34 @@ const Contact = () => {
       <Col md={1}></Col>
       <Col md={6}>
         <h1 className="mb-5">Contact Us</h1>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             Email address
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="exampleFormControlInput1"
             placeholder="Fullname goes here"
           />
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
             Email address
           </label>
           <input
             type="email"
-            class="form-control"
+            className="form-control"
             id="exampleFormControlInput1"
             placeholder="Email goes here"
           />
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
             Example textarea
           </label>
           <textarea
-            class="form-control mb-4"
+            className="form-control mb-4"
             id="exampleFormControlTextarea1"
             rows="7"
           ></textarea>

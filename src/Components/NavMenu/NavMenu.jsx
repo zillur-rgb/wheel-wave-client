@@ -61,6 +61,7 @@ const NavMenu = () => {
               style={{
                 textDecoration: "none",
                 color: "#959F9D",
+                padding: "0px 30px",
               }}
             >
               Contact
