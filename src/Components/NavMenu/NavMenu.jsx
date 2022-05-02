@@ -20,7 +20,7 @@ const NavMenu = () => {
           <Nav.Link href="#blogs">Blogs</Nav.Link>
           <Nav.Link href="#contact">Contact</Nav.Link>
         </Nav>
-        <div className="mx-4">
+        <div className="mx-0 my-2 md:my-0 md:mx-4">
           <Button bg="info" label="Sign In" />
         </div>
         <Button border="info" label="Sign Up" />
