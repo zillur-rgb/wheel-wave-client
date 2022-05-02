@@ -3,6 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import About from "../Components/About/About";
 import Banner from "../Components/Banner/Banner";
 import NavMenu from "../Components/NavMenu/NavMenu";
+import Products from "../Components/Products/Products";
 
 const Homepage = () => {
   return (
@@ -12,6 +13,7 @@ const Homepage = () => {
       </Row>
       <Banner />
       <About />
+      <Products />
     </Container>
   );
 };

@@ -7,10 +7,10 @@ const Banner = () => {
   return (
     <Row className="d-flex align-items-center py-5 my-5">
       <Col md={5}>
-        <h1 className="mx-auto text-left sm:text-center mb-3">
+        <h1 className="lh-md mx-auto text-left sm:text-center mb-3">
           Be Healthy Reduce Air Pollution Ride Bicycle
         </h1>
-        <p className="mx-auto fs-6 text-left sm:text-center text-secondary">
+        <p className="lh-lg mx-auto fs-6 text-left sm:text-center text-secondary">
           Supply bike and get a huge profit when you sell bike with us. You have
           all the controls to add delete or update the bike. You supply the bike
           and we will do the rest such as marketing and investment.

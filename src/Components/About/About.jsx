@@ -4,11 +4,11 @@ import about from "../../Assets/about.jpeg";
 
 const About = () => {
   return (
-    <Row className="d-flex align-items-center">
-      <Col lg={6}>
+    <Row className="d-flex align-items-center py-5">
+      <Col lg={6} className="my-5 py-5">
         <img src={about} alt="about" className="w-full" />
       </Col>
-      <Col md={5}>
+      <Col md={5} className="my-5 py-5">
         <h1 className="my-4">
           That's Us! <span className="text-info">Wheel Wave</span>.
         </h1>
