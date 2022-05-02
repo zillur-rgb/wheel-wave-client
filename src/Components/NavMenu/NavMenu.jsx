@@ -1,6 +1,7 @@
 import React from "react";
-import { ButtonGroup, Col, Nav, Navbar } from "react-bootstrap";
+import { Col, Nav, Navbar } from "react-bootstrap";
 import logo from "../../Assets/logo.jpeg";
+import Button from "../Button/Button";
 
 const NavMenu = () => {
   return (
@@ -19,10 +20,10 @@ const NavMenu = () => {
           <Nav.Link href="#blogs">Blogs</Nav.Link>
           <Nav.Link href="#contact">Contact</Nav.Link>
         </Nav>
-        <ButtonGroup className="btn btn-info text-light">Sign In</ButtonGroup>
-        <ButtonGroup className="btn btn-success text-light mx-4">
-          Sign Up
-        </ButtonGroup>
+        <div className="mx-4">
+          <Button bg="info" label="Sign In" />
+        </div>
+        <Button border="info" label="Sign Up" />
       </Navbar.Collapse>
     </Navbar>
   );
