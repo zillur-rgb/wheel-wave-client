@@ -70,7 +70,9 @@ const NavMenu = () => {
           <div className="mx-0 my-2 md:my-0 md:mx-4">
             <Button bg="info" label="Sign In" />
           </div>
-          <Button border="info" label="Sign Up" />
+          <Link to="/signup">
+            <Button border="info" label="Sign Up" />
+          </Link>
         </Navbar.Collapse>
       </Col>
     </Navbar>
