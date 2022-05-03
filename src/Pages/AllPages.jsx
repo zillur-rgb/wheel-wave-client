@@ -7,6 +7,7 @@ import ContactUs from "./ContacUs";
 import Blogs from "./Blogs";
 import Signup from "../Components/Signup/Signup";
 import Signin from "../Components/Signin/Signin";
+import ProductDetails from "./ProductDetails";
 
 const AllPages = () => {
   return (
@@ -18,6 +19,7 @@ const AllPages = () => {
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
+      <Route path="/:productid" element={<ProductDetails />} />
     </Routes>
   );
 };

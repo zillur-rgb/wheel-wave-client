@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
 const SingleProduct = ({ product }) => {
@@ -32,7 +33,9 @@ const SingleProduct = ({ product }) => {
           </Col>
         </Row>
       </div>
-      <Button label="Update" bg="info" />
+      <Link to={`/${product.id}`}>
+        <Button label="Update" bg="info" />
+      </Link>
     </div>
   );
 };
