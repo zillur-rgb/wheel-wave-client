@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.init";
 import Footer from "../Footer/Footer";
 import NavMenu from "../NavMenu/NavMenu";
@@ -13,6 +13,7 @@ const Signin = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
+  const location = useLocation();
 
   let errorMessage;
   if (error) {
@@ -23,8 +24,9 @@ const Signin = () => {
     <p>loading.....</p>;
   }
 
+  let from = location.state?.from?.pathname || "/";
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
 
   const handleSignIn = async () => {
