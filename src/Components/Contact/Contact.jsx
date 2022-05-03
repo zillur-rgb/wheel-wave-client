@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 
 const Contact = () => {
   return (
-    <Row className="d-flex">
+    <Row className="d-flex mt-5 pt-5">
       <Col md={5}>
         <img src={contact} alt="contact" className="h-75 w-100 contactImg" />
       </Col>
@@ -14,7 +14,7 @@ const Contact = () => {
         <h1 className="mb-5">Contact Us</h1>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
-            Email address
+            Your Fullname
           </label>
           <input
             type="text"
@@ -36,7 +36,7 @@ const Contact = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleFormControlTextarea1" className="form-label">
-            Example textarea
+            Your Message Goes Here
           </label>
           <textarea
             className="form-control mb-4"

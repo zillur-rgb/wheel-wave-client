@@ -1,10 +1,8 @@
-import React from "react";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import NavMenu from "../../Components/NavMenu/NavMenu";
 import Footer from "../../Components/Footer/Footer";
 import { Link } from "react-router-dom";
-import { BsGoogle, BsGithub } from "react-icons/bs";
-import { FaFacebookF } from "react-icons/fa";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Signup = () => {
   return (
@@ -55,20 +53,8 @@ const Signup = () => {
           </p>
         </Col>
         <Col md={1}></Col>
-        <Col md={5}>
-          <h3 className="py-5">Sign In using Social Media Account</h3>
-
-          <div className="my-5">
-            <Button variant="outline-danger" className="w-100">
-              Sign In using <BsGoogle className="mx-2" />
-            </Button>
-            <Button variant="outline-primary" className="w-100  my-2">
-              Sign In using <FaFacebookF className="mx-2" />
-            </Button>
-            <Button variant="outline-dark" className="w-100  my-2">
-              Sign In using <BsGithub className="mx-2" />
-            </Button>
-          </div>
+        <Col md={5} className="my-5">
+          <SocialLogin />
         </Col>
       </Row>
       <Footer />

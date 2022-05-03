@@ -5,6 +5,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavMenu from "../NavMenu/NavMenu";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Signin = () => {
   return (
@@ -39,19 +40,7 @@ const Signin = () => {
         </Col>
         <Col md={1}></Col>
         <Col md={5}>
-          <h3 className="py-5">Sign In using Social Media Account</h3>
-
-          <div className="my-5">
-            <Button variant="outline-danger" className="w-100">
-              Sign In using <BsGoogle className="mx-2" />
-            </Button>
-            <Button variant="outline-primary" className="w-100  my-2">
-              Sign In using <FaFacebookF className="mx-2" />
-            </Button>
-            <Button variant="outline-dark" className="w-100  my-2">
-              Sign In using <BsGithub className="mx-2" />
-            </Button>
-          </div>
+          <SocialLogin />
         </Col>
       </Row>
       <Footer />
