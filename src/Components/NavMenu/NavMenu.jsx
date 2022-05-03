@@ -1,10 +1,20 @@
 import React from "react";
 import { Col, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo.jpeg";
+import { auth } from "../../firebase.init";
 import Button from "../Button/Button";
 
 const NavMenu = () => {
+  const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+
+  const handleLogout = async () => {
+    auth.signOut();
+    alert("You are signed out!");
+    navigate("/");
+  };
   return (
     <Navbar bg="light" expand="lg">
       <Col md={4}>
@@ -67,14 +77,24 @@ const NavMenu = () => {
               Contact
             </Link>
           </Nav>
-          <div className="mx-0 my-2 md:my-0 md:mx-4">
-            <Link to="/signin">
-              <Button bg="info" label="Sign In" />
-            </Link>
-          </div>
-          <Link to="/signup">
-            <Button border="info" label="Sign Up" />
-          </Link>
+          {user ? (
+            <div>
+              <p>Hello {user.displayName}</p>
+              <button className="btn warning" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="mx-0 my-2 md:my-0 md:mx-4">
+              <Link to="/signin">
+                <Button bg="info" label="Sign In" />
+              </Link>
+
+              <Link to="/signup">
+                <Button border="info" label="Sign Up" />
+              </Link>
+            </div>
+          )}
         </Navbar.Collapse>
       </Col>
     </Navbar>

@@ -1,13 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { BsGithub, BsGoogle } from "react-icons/bs";
-import { FaFacebookF } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../firebase.init";
 import Footer from "../Footer/Footer";
 import NavMenu from "../NavMenu/NavMenu";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Signin = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const navigate = useNavigate();
+
+  let errorMessage;
+  if (error) {
+    errorMessage = <p>Error: {error?.message}</p>;
+  }
+
+  if (loading) {
+    <p>loading.....</p>;
+  }
+
+  if (user) {
+    navigate("/");
+  }
+
+  const handleSignIn = async () => {
+    await signInWithEmailAndPassword(email, password);
+  };
+
   return (
     <Container>
       <Row>
@@ -20,16 +43,32 @@ const Signin = () => {
           <Form>
             <Form.Group className="py-3" controlId="exampleForm.email">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="name@example.com" />
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
+              />
             </Form.Group>
             <Form.Group className="py-3" controlId="exampleForm.password">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Your Password here" />
+              <Form.Control
+                type="password"
+                placeholder="Your Password here"
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
+              />
             </Form.Group>
           </Form>
-          <Button variant="info" size="lg" className="w-100 text-white">
-            Sign Up
+          <Button
+            variant="info"
+            size="lg"
+            className="w-100 text-white"
+            onClick={handleSignIn}
+          >
+            Sign In
           </Button>
+          {errorMessage}
           <p className="my-3 text-muted">
             Not Registered Yet?
             <Link to="/signup" className="text-info">
