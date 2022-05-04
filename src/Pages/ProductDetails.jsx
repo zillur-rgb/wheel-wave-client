@@ -31,6 +31,7 @@ const ProductDetails = () => {
           <h1>Product Details</h1>
           <h3>{exact?.name}</h3>
           <h5>Price: € {exact?.price}</h5>
+          <p>Id: {exact?.id}</p>
           <p>Quantity: {exact?.quantity}</p>
           <p>Description: {exact?.desc}</p>
           <Button variant="info">Delivered?</Button>

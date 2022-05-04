@@ -9,6 +9,7 @@ import Signup from "../Components/Signup/Signup";
 import Signin from "../Components/Signin/Signin";
 import ProductDetails from "./ProductDetails";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
+import FourOFour from "./FourOFour";
 
 const AllPages = () => {
   return (
@@ -24,13 +25,14 @@ const AllPages = () => {
       {/* <Route path="/:productid" element={<ProductDetails />} /> */}
 
       <Route
-        path="/:productid"
+        path="product/:productid"
         element={
           <RequireAuth>
             <ProductDetails />
           </RequireAuth>
         }
       />
+      <Route path="*" element={<FourOFour />} />
     </Routes>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Nav, Navbar } from "react-bootstrap";
+import { Col, Dropdown, Nav, Navbar, SplitButton } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo.jpeg";
@@ -79,10 +79,17 @@ const NavMenu = () => {
           </Nav>
           {user ? (
             <div>
-              <p>Hello {user.displayName}</p>
-              <button className="btn warning" onClick={handleLogout}>
-                Logout
-              </button>
+              <Dropdown className="d-inline mx-2">
+                <Dropdown.Toggle id="dropdown-autoclose-true" variant="info">
+                  {user.displayName}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#">Add Item</Dropdown.Item>
+                  <Dropdown.Item href="#">Manage Items</Dropdown.Item>
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           ) : (
             <div className="mx-0 my-2 md:my-0 md:mx-4">
