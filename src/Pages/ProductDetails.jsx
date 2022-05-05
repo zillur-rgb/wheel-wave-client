@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, InputGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import Footer from "../Components/Footer/Footer";
@@ -8,6 +8,7 @@ import Footer from "../Components/Footer/Footer";
 const ProductDetails = () => {
   const params = useParams();
   const [products, setProducts] = useState([]);
+  const [stockValue, setStockValue] = useState("");
   console.log(products);
   const exact = products.find((product) => product.id === params.productid);
 
@@ -24,6 +25,24 @@ const ProductDetails = () => {
 
     axios
       .put(`http://localhost:5000/api/products/${id}`, updatedProduct)
+      .then((res) => {
+        setProducts(
+          products.map((product) => (product.id !== id ? product : res.data))
+        );
+      });
+  };
+
+  const handleRestock = (id) => {
+    const product = products.find((product) => product.id === id);
+    setStockValue("");
+
+    const restock = {
+      ...product,
+      quantity: product.quantity + parseInt(stockValue),
+    };
+
+    axios
+      .put(`http://localhost:5000/api/products/${id}`, restock)
       .then((res) => {
         setProducts(
           products.map((product) => (product.id !== id ? product : res.data))
@@ -48,14 +67,45 @@ const ProductDetails = () => {
           <p>Id: {exact?.id}</p>
           <p>Quantity: {exact?.quantity}</p>
           <p>Description: {exact?.desc}</p>
-          <Button
-            variant="info"
-            onClick={() => {
-              handleDelivered(exact.id);
-            }}
-          >
-            Delivered?
-          </Button>
+
+          <Row>
+            <Col md={4}>
+              <Button
+                variant="info"
+                onClick={() => {
+                  handleDelivered(exact.id);
+                }}
+              >
+                Delivered?
+              </Button>
+            </Col>
+
+            <Col md={6}>
+              <div
+                style={{
+                  display: "flex",
+                }}
+              >
+                <input
+                  type="number"
+                  className="form-control"
+                  value={stockValue}
+                  onChange={({ target }) => setStockValue(target.value)}
+                />
+                <Button
+                  variant="outline-info"
+                  style={{
+                    whiteSpace: "nowrap",
+                  }}
+                  onClick={() => {
+                    handleRestock(exact.id);
+                  }}
+                >
+                  Restock item
+                </Button>
+              </div>
+            </Col>
+          </Row>
         </Col>
         <Col md={1}></Col>
       </Row>

@@ -33,9 +33,11 @@ const SingleProduct = ({ product }) => {
           </Col>
         </Row>
       </div>
-      <Link to={`/product/${product.id}`}>
-        <Button label="Update" bg="info" />
-      </Link>
+      <Row>
+        <Link to={`/product/${product.id}`}>
+          <Button label="Update" bg="info" />
+        </Link>
+      </Row>
     </div>
   );
 };
