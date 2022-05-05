@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Dropdown, Nav, Navbar } from "react-bootstrap";
+import { Col, Dropdown, Nav, Navbar, Spinner } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo.jpeg";
@@ -12,15 +12,20 @@ const NavMenu = () => {
 
   const handleLogout = async () => {
     auth.signOut();
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>;
     alert("You are signed out!");
     navigate("/");
   };
   return (
     <Navbar bg="light" expand="lg">
       <Col md={4}>
-        <Navbar.Brand href="#home">
-          <img src={logo} alt="logo" className="w-25" />
-        </Navbar.Brand>
+        <Link to="/">
+          <Navbar.Brand>
+            <img src={logo} alt="logo" className="w-25" />
+          </Navbar.Brand>
+        </Link>
       </Col>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Col md={8}>
@@ -98,8 +103,12 @@ const NavMenu = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#">Add Item</Dropdown.Item>
-                  <Dropdown.Item href="#">Manage Items</Dropdown.Item>
+                  <Dropdown.Item>Add Item</Dropdown.Item>
+
+                  <Dropdown.Item>
+                    <Link to="/ManageInventory">Manage Items</Link>
+                  </Dropdown.Item>
+
                   <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

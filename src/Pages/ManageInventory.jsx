@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AddNewModal from "../Components/AddNewModal/AddNewModal";

@@ -1,4 +1,4 @@
-import { Col, Container, Form, Row, Button } from "react-bootstrap";
+import { Col, Container, Form, Row, Button, Spinner } from "react-bootstrap";
 import NavMenu from "../../Components/NavMenu/NavMenu";
 import Footer from "../../Components/Footer/Footer";
 import { Link, useNavigate } from "react-router-dom";
@@ -27,11 +27,15 @@ const Signup = () => {
   }
 
   if (loading || updating) {
-    <p>loading.....</p>;
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
   if (user) {
-    navigate("/");
+    navigate("/EmailVerification");
   }
 
   const handleCreateUser = async () => {

@@ -1,17 +1,10 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import useProductsHook from "../../Hooks/useProductsHook";
 import Button from "../Button/Button";
 
 const SingleProductManage = ({ product, handleDelete }) => {
   const [allDesc, setAllDesc] = useState(false);
-  const [products, setProducts] = useProductsHook();
-
-  const hand = () => {
-    console.log(123);
-  };
 
   return (
     <div className="card my-3">
