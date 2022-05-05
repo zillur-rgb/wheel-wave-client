@@ -16,6 +16,20 @@ const ProductDetails = () => {
       setProducts(res.data);
     });
   }, []);
+
+  const handleDelivered = (id) => {
+    const product = products.find((product) => product.id === id);
+
+    const updatedProduct = { ...product, quantity: product.quantity - 1 };
+
+    axios
+      .put(`http://localhost:5000/api/products/${id}`, updatedProduct)
+      .then((res) => {
+        setProducts(
+          products.map((product) => (product.id !== id ? product : res.data))
+        );
+      });
+  };
   return (
     <Container>
       <Row>
@@ -34,7 +48,14 @@ const ProductDetails = () => {
           <p>Id: {exact?.id}</p>
           <p>Quantity: {exact?.quantity}</p>
           <p>Description: {exact?.desc}</p>
-          <Button variant="info">Delivered?</Button>
+          <Button
+            variant="info"
+            onClick={() => {
+              handleDelivered(exact.id);
+            }}
+          >
+            Delivered?
+          </Button>
         </Col>
         <Col md={1}></Col>
       </Row>
