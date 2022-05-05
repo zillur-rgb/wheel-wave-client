@@ -19,6 +19,15 @@ const ManageInventory = () => {
   //   });
   // }, []);
 
+  const handleDelete = (id) => {
+    console.log(id);
+    if (window.confirm("Do you really want to delete the product?")) {
+      axios.delete(`http://localhost:5000/api/products/${id}`).then(() => {
+        setProducts(products.filter((product) => product.id !== id));
+      });
+    }
+  };
+
   // Modal State
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -56,7 +65,12 @@ const ManageInventory = () => {
         {products.map((product) => {
           return (
             <Col md={4} key={product.id}>
-              <SingleProductManage product={product} />
+              <SingleProductManage
+                product={product}
+                handleDelete={() => {
+                  handleDelete(product.id);
+                }}
+              />
             </Col>
           );
         })}

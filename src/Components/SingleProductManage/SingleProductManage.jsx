@@ -5,16 +5,14 @@ import { Link } from "react-router-dom";
 import useProductsHook from "../../Hooks/useProductsHook";
 import Button from "../Button/Button";
 
-const SingleProductManage = ({ product }) => {
+const SingleProductManage = ({ product, handleDelete }) => {
   const [allDesc, setAllDesc] = useState(false);
   const [products, setProducts] = useProductsHook();
 
-  const handleDelete = (id) => {
-    console.log(id);
-    axios.delete(`http://localhost:5000/api/products/${id}`).then(() => {
-      setProducts(products.filter((product) => product.id !== id));
-    });
+  const hand = () => {
+    console.log(123);
   };
+
   return (
     <div className="card my-3">
       <img src={product.image} className="card-img-top" alt="productimage" />
@@ -50,13 +48,12 @@ const SingleProductManage = ({ product }) => {
           </Col>
           <Col md={5}></Col>
           <Col md={3}>
-            <Button
-              label="Delete"
-              bg="danger"
-              onClick={() => {
-                handleDelete(product.id);
-              }}
-            />
+            <button
+              className="bg-danger text-white px-3 py-2"
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
           </Col>
         </Row>
       </div>
