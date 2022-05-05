@@ -8,7 +8,7 @@ const useProductsHook = () => {
     axios.get("http://localhost:5000/api/products").then((res) => {
       setProducts(res.data);
     });
-  }, []);
+  }, [products]);
 
   return [products, setProducts];
 };

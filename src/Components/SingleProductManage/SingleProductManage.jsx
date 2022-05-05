@@ -1,10 +1,20 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useProductsHook from "../../Hooks/useProductsHook";
 import Button from "../Button/Button";
 
-const SingleProductManage = ({ product, handleDelete }) => {
+const SingleProductManage = ({ product }) => {
   const [allDesc, setAllDesc] = useState(false);
+  const [products, setProducts] = useProductsHook();
+
+  const handleDelete = (id) => {
+    console.log(id);
+    axios.delete(`http://localhost:5000/api/products/${id}`).then(() => {
+      setProducts(products.filter((product) => product.id !== id));
+    });
+  };
   return (
     <div className="card my-3">
       <img src={product.image} className="card-img-top" alt="productimage" />

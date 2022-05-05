@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import AddNewModal from "../Components/AddNewModal/AddNewModal";
@@ -13,16 +13,17 @@ const ManageInventory = () => {
   const [products, setProducts] = useProductsHook();
   const [user] = useAuthState(auth);
 
+  // useEffect(() => {
+  //   axios.get("http://localhost:5000/api/products").then((res) => {
+  //     setProducts(res.data);
+  //   });
+  // }, []);
+
   // Modal State
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/products/${id}`).then(() => {
-      setProducts(products.filter((product) => product.id !== id));
-    });
-  };
   return (
     <Container>
       <Row>
@@ -55,10 +56,7 @@ const ManageInventory = () => {
         {products.map((product) => {
           return (
             <Col md={4} key={product.id}>
-              <SingleProductManage
-                product={product}
-                handleDelete={handleDelete}
-              />
+              <SingleProductManage product={product} />
             </Col>
           );
         })}
