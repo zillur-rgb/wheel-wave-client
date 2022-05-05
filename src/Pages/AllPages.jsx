@@ -10,6 +10,7 @@ import Signin from "../Components/Signin/Signin";
 import ProductDetails from "./ProductDetails";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import FourOFour from "./FourOFour";
+import ManageInventory from "./ManageInventory";
 
 const AllPages = () => {
   return (
@@ -21,6 +22,7 @@ const AllPages = () => {
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
+      <Route path="/ManageInventory" element={<ManageInventory />} />
 
       {/* <Route path="/:productid" element={<ProductDetails />} /> */}
 

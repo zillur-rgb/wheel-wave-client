@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Dropdown, Nav, Navbar, SplitButton } from "react-bootstrap";
+import { Col, Dropdown, Nav, Navbar } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo.jpeg";
@@ -36,16 +36,29 @@ const NavMenu = () => {
             >
               Home
             </Link>
-            <Link
-              to="/products"
-              style={{
-                textDecoration: "none",
-                color: "#959F9D",
-                padding: "0px 30px",
-              }}
-            >
-              Products
-            </Link>
+            {user ? (
+              <Link
+                to="/ManageInventory"
+                style={{
+                  textDecoration: "none",
+                  color: "#959F9D",
+                  padding: "0px 30px",
+                }}
+              >
+                Manage Inventory
+              </Link>
+            ) : (
+              <Link
+                to="/products"
+                style={{
+                  textDecoration: "none",
+                  color: "#959F9D",
+                  padding: "0px 30px",
+                }}
+              >
+                Products
+              </Link>
+            )}
             <Link
               to="/about"
               style={{

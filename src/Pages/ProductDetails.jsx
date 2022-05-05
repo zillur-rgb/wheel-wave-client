@@ -35,7 +35,9 @@ const ProductDetails = () => {
   const handleRestock = (id) => {
     const product = products.find((product) => product.id === id);
     setStockValue("");
-
+    if (parseInt(stockValue) < 1 || !stockValue) {
+      alert("Stock value must be greater than 0");
+    }
     const restock = {
       ...product,
       quantity: product.quantity + parseInt(stockValue),
