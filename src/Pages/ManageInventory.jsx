@@ -7,10 +7,10 @@ import Footer from "../Components/Footer/Footer";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import SingleProductManage from "../Components/SingleProductManage/SingleProductManage";
 import { auth } from "../firebase.init";
-import useProductsHook from "../Hooks/useProductsHook";
+import useGoodsHook from "../Hooks/useGoodsHook";
 
 const ManageInventory = () => {
-  const [products, setProducts] = useProductsHook();
+  const [goods, setGoods] = useGoodsHook();
   const [user] = useAuthState(auth);
 
   // useEffect(() => {
@@ -23,7 +23,7 @@ const ManageInventory = () => {
     console.log(id);
     if (window.confirm("Do you really want to delete the product?")) {
       axios.delete(`http://localhost:5000/api/products/${id}`).then(() => {
-        setProducts(products.filter((product) => product.id !== id));
+        setGoods(goods.filter((product) => product.id !== id));
       });
     }
   };
@@ -62,7 +62,7 @@ const ManageInventory = () => {
           </Col>
           <AddNewModal handleClose={handleClose} show={show} />
         </Row>
-        {products.map((product) => {
+        {goods.map((product) => {
           return (
             <Col md={4} key={product.id}>
               <SingleProductManage

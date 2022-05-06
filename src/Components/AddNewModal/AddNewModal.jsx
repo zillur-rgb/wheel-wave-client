@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import useProductsHook from "../../Hooks/useProductsHook";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase.init";
+import useGoodsHook from "../../Hooks/useGoodsHook";
 
 const AddNewModal = ({ handleClose, show }) => {
   const [productName, setProductName] = useState("");
@@ -11,11 +13,14 @@ const AddNewModal = ({ handleClose, show }) => {
   const [quantity, setQuantity] = useState("");
   const [supplierName, setSupplierName] = useState("");
 
+  const [user] = useAuthState(auth);
+
   //This is a custom hook where I am fetching data.
-  const [products, setProducts] = useProductsHook();
+  const [goods, setGoods] = useGoodsHook();
 
   const handleAddProduct = () => {
     const newProduct = {
+      userEmail: user.email,
       name: productName,
       image: imageLink,
       desc: desc,
@@ -23,8 +28,8 @@ const AddNewModal = ({ handleClose, show }) => {
       quantity: +quantity,
       supplier: supplierName,
     };
-    axios.post("http://localhost:5000/api/products", newProduct).then((res) => {
-      setProducts(products.concat(res.data));
+    axios.post("http://localhost:5000/api/goods", newProduct).then((res) => {
+      setGoods(goods.concat(res.data));
       setProductName("");
       setImageLink("");
       setDesc("");
