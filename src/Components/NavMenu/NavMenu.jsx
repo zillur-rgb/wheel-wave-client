@@ -108,7 +108,7 @@ const NavMenu = () => {
                   </Dropdown.Item>
 
                   <Dropdown.Item>
-                    <Link to="/ManageInventory">Manage Items</Link>
+                    <Link to="/Products">Update Items</Link>
                   </Dropdown.Item>
                   <Dropdown.Item>
                     <Link to="/myItems">My Items</Link>
