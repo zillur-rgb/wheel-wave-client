@@ -7,8 +7,10 @@ import {
   AiFillInstagram,
   AiFillYoutube,
 } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <Row className="my-5 pt-5">
       <Col md={4}>
@@ -27,11 +29,21 @@ const Footer = () => {
         <p>
           <b>Navigation</b>
         </p>
-        <p className="text-muted">Home</p>
-        <p className="text-muted">Products</p>
-        <p className="text-muted">About</p>
-        <p className="text-muted">Blogs</p>
-        <p className="text-muted">Contact</p>
+        <p className="text-muted" onClick={() => navigate("/")}>
+          Home
+        </p>
+        <p className="text-muted" onClick={() => navigate("/products")}>
+          Products
+        </p>
+        <p className="text-muted" onClick={() => navigate("/about")}>
+          About
+        </p>
+        <p className="text-muted" onClick={() => navigate("/blogs")}>
+          Blogs
+        </p>
+        <p className="text-muted" onClick={() => navigate("/contact")}>
+          Contact
+        </p>
       </Col>
       <Col md={2}>
         <p>

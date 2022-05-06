@@ -1,23 +1,24 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { auth } from "../../firebase.init";
-import Footer from "../Footer/Footer";
-import NavMenu from "../NavMenu/NavMenu";
-import SocialLogin from "../SocialLogin/SocialLogin";
+import { auth } from "../firebase.init";
+import Footer from "../Components/Footer/Footer";
+import NavMenu from "../Components/NavMenu/NavMenu";
+import SocialLogin from "../Components/SocialLogin/SocialLogin";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
   const location = useLocation();
 
   let errorMessage;
   if (error) {
-    errorMessage = <p>Error: {error?.message}</p>;
+    errorMessage = <p>{error?.message}</p>;
   }
 
   if (loading) {
@@ -29,12 +30,17 @@ const Signin = () => {
   }
 
   let from = location.state?.from?.pathname || "/";
-  if (user) {
-    navigate(from, { replace: true });
-  }
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
 
   const handleSignIn = async () => {
     await signInWithEmailAndPassword(email, password);
+    const { data } = await axios.post("http://localhost:5000/api/login", {
+      email,
+    });
+    localStorage.setItem("accessToken", data.accessToken);
+    navigate(from, { replace: true });
   };
 
   return (

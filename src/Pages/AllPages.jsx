@@ -5,14 +5,15 @@ import Products from "./Products";
 import AboutUs from "./About";
 import ContactUs from "./ContacUs";
 import Blogs from "./Blogs";
-import Signup from "../Components/Signup/Signup";
-import Signin from "../Components/Signin/Signin";
+import Signup from "./Signup";
+import Signin from "./Signin";
 import ProductDetails from "./ProductDetails";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import FourOFour from "./FourOFour";
 import ManageInventory from "./ManageInventory";
 import EmailVerification from "./EmailVerification";
 import MyItems from "./MyItems";
+import AddBlogs from "./AddBlogs";
 
 const AllPages = () => {
   return (
@@ -29,6 +30,15 @@ const AllPages = () => {
       <Route path="/myItems" element={<MyItems />} />
 
       {/* <Route path="/:productid" element={<ProductDetails />} /> */}
+
+      <Route
+        path="/AddBlogs"
+        element={
+          <RequireAuth>
+            <AddBlogs />
+          </RequireAuth>
+        }
+      />
       <Route
         path="/ManageInventory"
         element={

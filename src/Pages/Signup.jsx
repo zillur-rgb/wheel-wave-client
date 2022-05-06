@@ -1,9 +1,9 @@
 import { Col, Container, Form, Row, Button, Spinner } from "react-bootstrap";
-import NavMenu from "../../Components/NavMenu/NavMenu";
-import Footer from "../../Components/Footer/Footer";
+import NavMenu from "../Components/NavMenu/NavMenu";
+import Footer from "../Components/Footer/Footer";
 import { Link, useNavigate } from "react-router-dom";
-import SocialLogin from "../SocialLogin/SocialLogin";
-import { auth } from "../../firebase.init";
+import SocialLogin from "../Components/SocialLogin/SocialLogin";
+import { auth } from "../firebase.init";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -23,7 +23,7 @@ const Signup = () => {
 
   let errorMessage;
   if (error || updateError) {
-    errorMessage = <p>Error: {error?.message}</p>;
+    errorMessage = <p>{error?.message}</p>;
   }
 
   if (loading || updating) {

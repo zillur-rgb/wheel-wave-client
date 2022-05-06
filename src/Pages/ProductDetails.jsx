@@ -69,14 +69,18 @@ const ProductDetails = () => {
 
           <Row>
             <Col md={4}>
-              <Button
-                variant="info"
-                onClick={() => {
-                  handleDelivered(exact.id);
-                }}
-              >
-                Delivered?
-              </Button>
+              {exact?.quantity < 1 ? (
+                <Button disabled>Sold Out</Button>
+              ) : (
+                <Button
+                  variant="info"
+                  onClick={() => {
+                    handleDelivered(exact.id);
+                  }}
+                >
+                  Delivered?
+                </Button>
+              )}
             </Col>
 
             <Col md={6}>
