@@ -6,16 +6,17 @@ import Footer from "../Components/Footer/Footer";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import SingleProduct from "../Components/SingleProduct/SingleProduct";
 import { auth } from "../firebase.init";
+import useGoodsHook from "../Hooks/useGoodsHook";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [goods, setGoods] = useGoodsHook();
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products").then((res) => {
-      setProducts(res.data);
+    axios.get("http://localhost:5000/api/goods").then((res) => {
+      setGoods(res.data);
     });
-  }, []);
+  }, [setGoods]);
 
   return (
     <Container>
@@ -25,7 +26,7 @@ const Products = () => {
       <Row className="my-5 py-5">
         <h1 className="text-center my-5">Products Catalog</h1>
 
-        {products.map((product) => {
+        {goods.map((product) => {
           return (
             <Col md={4} key={product.id}>
               <SingleProduct product={product} />

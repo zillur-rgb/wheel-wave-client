@@ -8,7 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -28,7 +28,11 @@ const SocialLogin = () => {
   }
 
   if (loading || fbLoading || gitLoading) {
-    return <p>Loading..</p>;
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
   if (user || fbUser || gitUser) {

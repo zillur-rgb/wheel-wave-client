@@ -1,39 +1,37 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Button, Col, Container, InputGroup, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import Footer from "../Components/Footer/Footer";
+import useGoodsHook from "../Hooks/useGoodsHook";
 
 const ProductDetails = () => {
   const params = useParams();
-  const [products, setProducts] = useState([]);
+  const [goods, setGoods] = useGoodsHook();
   const [stockValue, setStockValue] = useState("");
-  console.log(products);
-  const exact = products.find((product) => product.id === params.productid);
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/products").then((res) => {
-      setProducts(res.data);
-    });
-  }, []);
+  const exact = goods.find((product) => product.id === params.productid);
 
   const handleDelivered = (id) => {
-    const product = products.find((product) => product.id === id);
+    const product = goods.find((product) => product.id === id);
 
-    const updatedProduct = { ...product, quantity: product.quantity - 1 };
+    const updatedProduct = {
+      ...product,
+      sold: product.sold + 1,
+      quantity: product.quantity - 1,
+    };
 
     axios
-      .put(`http://localhost:5000/api/products/${id}`, updatedProduct)
+      .put(`http://localhost:5000/api/goods/${id}`, updatedProduct)
       .then((res) => {
-        setProducts(
-          products.map((product) => (product.id !== id ? product : res.data))
+        setGoods(
+          goods.map((product) => (product.id !== id ? product : res.data))
         );
       });
   };
 
   const handleRestock = (id) => {
-    const product = products.find((product) => product.id === id);
+    const product = goods.find((product) => product.id === id);
     setStockValue("");
     if (parseInt(stockValue) < 1 || !stockValue) {
       alert("Stock value must be greater than 0");
@@ -43,13 +41,11 @@ const ProductDetails = () => {
       quantity: product.quantity + parseInt(stockValue),
     };
 
-    axios
-      .put(`http://localhost:5000/api/products/${id}`, restock)
-      .then((res) => {
-        setProducts(
-          products.map((product) => (product.id !== id ? product : res.data))
-        );
-      });
+    axios.put(`http://localhost:5000/api/goods/${id}`, restock).then((res) => {
+      setGoods(
+        goods.map((product) => (product.id !== id ? product : res.data))
+      );
+    });
   };
   return (
     <Container>
@@ -68,6 +64,7 @@ const ProductDetails = () => {
           <h5>Price: € {exact?.price}</h5>
           <p>Id: {exact?.id}</p>
           <p>Quantity: {exact?.quantity}</p>
+          <p className="text-muted">Sold: {exact?.sold}</p>
           <p>Description: {exact?.desc}</p>
 
           <Row>

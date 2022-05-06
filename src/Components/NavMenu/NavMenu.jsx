@@ -103,10 +103,15 @@ const NavMenu = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item>Add Item</Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/ManageInventory">Add Item</Link>
+                  </Dropdown.Item>
 
                   <Dropdown.Item>
                     <Link to="/ManageInventory">Manage Items</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/myItems">My Items</Link>
                   </Dropdown.Item>
 
                   <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>

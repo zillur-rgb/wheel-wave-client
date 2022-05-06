@@ -11,6 +11,7 @@ const AddNewModal = ({ handleClose, show }) => {
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [sold, setSold] = useState("");
   const [supplierName, setSupplierName] = useState("");
 
   const [user] = useAuthState(auth);
@@ -20,7 +21,8 @@ const AddNewModal = ({ handleClose, show }) => {
 
   const handleAddProduct = () => {
     const newProduct = {
-      userEmail: user.email,
+      uEmail: user.email,
+      sold: +sold,
       name: productName,
       image: imageLink,
       desc: desc,
@@ -36,6 +38,7 @@ const AddNewModal = ({ handleClose, show }) => {
       setPrice("");
       setQuantity("");
       setSupplierName("");
+      setSold("");
     });
   };
 
@@ -89,6 +92,15 @@ const AddNewModal = ({ handleClose, show }) => {
           placeholder="Quantity"
           onChange={({ target }) => {
             setQuantity(target.value);
+          }}
+        />
+        <Form.Control
+          type="number"
+          value={sold}
+          className="mb-3"
+          placeholder="Sold"
+          onChange={({ target }) => {
+            setSold(target.value);
           }}
         />
         <Form.Control

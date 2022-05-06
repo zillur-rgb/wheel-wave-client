@@ -1,37 +1,31 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import AddNewModal from "../Components/AddNewModal/AddNewModal";
 import Footer from "../Components/Footer/Footer";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import SingleProductManage from "../Components/SingleProductManage/SingleProductManage";
 import { auth } from "../firebase.init";
 import useGoodsHook from "../Hooks/useGoodsHook";
 
-const ManageInventory = () => {
+const MyItems = () => {
   const [goods, setGoods] = useGoodsHook();
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/api/products").then((res) => {
-  //     setProducts(res.data);
-  //   });
-  // }, []);
+  if (loading) {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
+  const particular = goods.filter((good) => good.uEmail === user.email);
 
   const handleDelete = (id) => {
-    console.log(id);
-    if (window.confirm("Do you really want to delete the product?")) {
-      axios.delete(`http://localhost:5000/api/goods/${id}`).then(() => {
-        setGoods(goods.filter((product) => product.id !== id));
-      });
-    }
+    axios.delete(`http://localhost:5000/api/goods/${id}`).then(() => {
+      setGoods(goods.filter((good) => good.id !== id));
+    });
   };
-
-  // Modal State
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   return (
     <Container>
@@ -51,18 +45,13 @@ const ManageInventory = () => {
           <Col md={5}></Col>
           <Col md={2}>
             {user && (
-              <Button
-                variant="success"
-                className="text-white"
-                onClick={handleShow}
-              >
+              <Button variant="success" className="text-white">
                 Add New Product
               </Button>
             )}
           </Col>
-          <AddNewModal handleClose={handleClose} show={show} />
         </Row>
-        {goods.map((product) => {
+        {particular.map((product) => {
           return (
             <Col md={4} key={product.id}>
               <SingleProductManage
@@ -80,5 +69,4 @@ const ManageInventory = () => {
   );
 };
 
-export default ManageInventory;
-<h1>Hello Moto</h1>;
+export default MyItems;

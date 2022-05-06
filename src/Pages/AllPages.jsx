@@ -12,6 +12,7 @@ import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import FourOFour from "./FourOFour";
 import ManageInventory from "./ManageInventory";
 import EmailVerification from "./EmailVerification";
+import MyItems from "./MyItems";
 
 const AllPages = () => {
   return (
@@ -23,11 +24,19 @@ const AllPages = () => {
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
-      <Route path="/ManageInventory" element={<ManageInventory />} />
+      {/* <Route path="/ManageInventory" element={<ManageInventory />} /> */}
       <Route path="/EmailVerification" element={<EmailVerification />} />
+      <Route path="/myItems" element={<MyItems />} />
 
       {/* <Route path="/:productid" element={<ProductDetails />} /> */}
-
+      <Route
+        path="/ManageInventory"
+        element={
+          <RequireAuth>
+            <ManageInventory />
+          </RequireAuth>
+        }
+      />
       <Route
         path="product/:productid"
         element={
