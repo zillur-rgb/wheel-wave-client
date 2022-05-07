@@ -88,13 +88,27 @@ const Signin = () => {
           </Form>
 
           {errorMessage}
-          <p className="my-3 text-muted">
-            Not Registered Yet?
-            <Link to="/signup" className="text-info">
-              <b>Sign Up Here</b>
-            </Link>{" "}
-            here
-          </p>
+          <Row>
+            <Col md={4}>
+              <p className="my-3 text-muted">
+                Not Registered Yet?
+                <Link to="/signup" className="text-info">
+                  <b>Sign Up Here</b>
+                </Link>{" "}
+                here
+              </p>
+            </Col>
+            <Col></Col>
+            <Col>
+              <p className="my-3 text-muted">
+                <Button variant="white" className="text-danger">
+                  <Link to="/ForgotPasswordPage" className="text-info">
+                    Forgot Password?
+                  </Link>
+                </Button>
+              </p>
+            </Col>
+          </Row>
         </Col>
         <Col md={1}></Col>
         <Col md={5}>

@@ -14,6 +14,7 @@ import ManageInventory from "./ManageInventory";
 import EmailVerification from "./EmailVerification";
 import MyItems from "./MyItems";
 import AddBlogs from "./AddBlogs";
+import ForgotPasswordPage from "./ForgotPassword";
 
 const AllPages = () => {
   return (
@@ -28,6 +29,7 @@ const AllPages = () => {
       {/* <Route path="/ManageInventory" element={<ManageInventory />} /> */}
       <Route path="/EmailVerification" element={<EmailVerification />} />
       <Route path="/myItems" element={<MyItems />} />
+      <Route path="/ForgotPasswordPage" element={<ForgotPasswordPage />} />
 
       {/* <Route path="/:productid" element={<ProductDetails />} /> */}
 
