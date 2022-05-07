@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import Footer from "../Components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
+import AllBlogs from "../Components/AllBlogs/AllBlogs";
 
 const Blogs = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Blogs = () => {
           </Button>
         </Col>
       </Row>
-
+      <AllBlogs />
       <Footer />
     </Container>
   );
