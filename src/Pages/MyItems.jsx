@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Col, Container, Row, Spinner } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
+import AddNewModal from "../Components/AddNewModal/AddNewModal";
 import Footer from "../Components/Footer/Footer";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import SingleProductManage from "../Components/SingleProductManage/SingleProductManage";
@@ -11,6 +12,11 @@ import useGoodsHook from "../Hooks/useGoodsHook";
 const MyItems = () => {
   const [goods, setGoods] = useGoodsHook();
   const [user, loading] = useAuthState(auth);
+
+  // Modal State
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   if (loading) {
     return (
@@ -22,9 +28,11 @@ const MyItems = () => {
   const particular = goods.filter((good) => good.uEmail === user.email);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:5000/api/goods/${id}`).then(() => {
-      setGoods(goods.filter((good) => good.id !== id));
-    });
+    if (window.confirm("Do you really want to delete the product?")) {
+      axios.delete(`http://localhost:5000/api/goods/${id}`).then(() => {
+        setGoods(goods.filter((product) => product.id !== id));
+      });
+    }
   };
 
   return (
@@ -45,11 +53,16 @@ const MyItems = () => {
           <Col md={5}></Col>
           <Col md={2}>
             {user && (
-              <Button variant="success" className="text-white">
+              <Button
+                variant="success"
+                className="text-white"
+                onClick={handleShow}
+              >
                 Add New Product
               </Button>
             )}
           </Col>
+          {user && <AddNewModal handleClose={handleClose} show={show} />}
         </Row>
         {particular.map((product) => {
           return (

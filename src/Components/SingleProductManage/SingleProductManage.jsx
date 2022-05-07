@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase.init";
 import Button from "../Button/Button";
 
 const SingleProductManage = ({ product, handleDelete }) => {
   const [allDesc, setAllDesc] = useState(false);
+  const [user] = useAuthState(auth);
 
   return (
     <div className="card my-3">
@@ -44,12 +47,14 @@ const SingleProductManage = ({ product, handleDelete }) => {
           </Col>
           <Col md={5}></Col>
           <Col md={3}>
-            <button
-              className="bg-danger text-white px-3 py-2"
-              onClick={handleDelete}
-            >
-              Delete
-            </button>
+            {user.email === product.uEmail && (
+              <button
+                className="bg-danger text-white px-3 py-2"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+            )}
           </Col>
         </Row>
       </div>
