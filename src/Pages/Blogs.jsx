@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import NavMenu from "../Components/NavMenu/NavMenu";
 import Footer from "../Components/Footer/Footer";
-import axios from "axios";
-import SingleBlog from "../Components/SingleBlog/SingleBlog";
 import { useNavigate } from "react-router-dom";
 
 const Blogs = () => {
-  const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/blogs").then((res) => {
-      setBlogs(res.data);
-    });
-  }, []);
 
   return (
     <Container>
@@ -37,11 +28,7 @@ const Blogs = () => {
           </Button>
         </Col>
       </Row>
-      <Row>
-        {blogs.map((blog) => {
-          return <SingleBlog key={blog.id} blog={blog} />;
-        })}
-      </Row>
+
       <Footer />
     </Container>
   );

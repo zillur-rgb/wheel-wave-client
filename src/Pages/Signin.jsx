@@ -18,7 +18,7 @@ const Signin = () => {
 
   let errorMessage;
   if (error) {
-    errorMessage = <p>{error?.message}</p>;
+    errorMessage = <p className="warning"></p>;
   }
 
   if (loading) {
@@ -31,7 +31,7 @@ const Signin = () => {
 
   let from = location.state?.from?.pathname || "/";
   // if (user) {
-  //   navigate(from, { replace: true });
+  //   // navigate(from, { replace: true });
   // }
 
   const handleSignIn = async () => {
@@ -39,7 +39,7 @@ const Signin = () => {
     const { data } = await axios.post("http://localhost:5000/api/login", {
       email,
     });
-    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("wheelwaveLoginToken", data.accessToken);
     navigate(from, { replace: true });
   };
 
@@ -61,6 +61,9 @@ const Signin = () => {
                 value={email}
                 onChange={({ target }) => setEmail(target.value)}
               />
+              <Form.Text className="text-muted">
+                Demo User Email: solo@gmail.com Password: 12345678
+              </Form.Text>
             </Form.Group>
             <Form.Group className="py-3" controlId="exampleForm.password">
               <Form.Label>Password</Form.Label>
@@ -71,15 +74,16 @@ const Signin = () => {
                 onChange={({ target }) => setPassword(target.value)}
               />
             </Form.Group>
+            <Button
+              variant="info"
+              size="lg"
+              className="w-100 text-white"
+              onClick={handleSignIn}
+            >
+              Sign In
+            </Button>
           </Form>
-          <Button
-            variant="info"
-            size="lg"
-            className="w-100 text-white"
-            onClick={handleSignIn}
-          >
-            Sign In
-          </Button>
+
           {errorMessage}
           <p className="my-3 text-muted">
             Not Registered Yet?

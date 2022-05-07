@@ -33,6 +33,9 @@ const SingleProductManage = ({ product, handleDelete }) => {
             Quantity: {product.quantity}
           </Col>
         </Row>
+        <Row>
+          <p className="text-muted">Supplier: {product.supplier}</p>
+        </Row>
         <Row className="my-2">
           <Col md={4}>
             <Link to={`/product/${product.id}`}>

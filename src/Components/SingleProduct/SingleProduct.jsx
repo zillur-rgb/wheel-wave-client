@@ -32,6 +32,9 @@ const SingleProduct = ({ product }) => {
             Quantity: {product.quantity}
           </Col>
         </Row>
+        <Row>
+          <p className="text-muted">Supplier: {product.supplier}</p>
+        </Row>
       </div>
       <Row>
         <Link to={`/product/${product.id}`}>

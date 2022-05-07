@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+Assignment-10 for Programming Hero
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
 
-## Available Scripts
+- [Overview](#overview)
+  - [ThechallengeandHowitworks](#The-challenge-and-How-it-works)
+  - [Links](#links)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [Author](#author)
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+The task was to create an app for an Independent Service Provider. I have chosen website for Lawyer and the name I have chosen Law Art.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge and How it works
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Most time consuming challenge was to find a niche. It took me so long to find my niche.
+- There is a homepage where a navigation bar which will be used for login and also navigate to different route.
+- There is a service section where the services lawyer provides are listed and user can book an appointment for a particular service by clicking on the button.
+- For booking an appointment user must do the sign in process so if user clicks on the book an appointment it will navigate to the signin page unless the user is already signed in.
+- From sign in page if an user doesn't have an account, he/ she can go to signup page and complete the sign up.
+- User can sign in using email and password or using his / her google account.
+- Once he / she signs up, the page will be redirected to the checkout page.
 
-### `npm test`
+### Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Github Link: [https://github.com/programming-hero-web-course-4/independent-service-provider-zillur-rgb](https://github.com/programming-hero-web-course-4/independent-service-provider-zillur-rgb)
+- Live URL: [https://law-art-website.web.app/](https://law-art-website.web.app/)
 
-### `npm run build`
+### Built with
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ReactJS
+- Firebase
+- React Firebase Hooks
+- React Custom Hook
+- React Router
+- React Bootstrap
+- HTML 5
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### What I learned
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- This task was really challenging especially fulfilling requirement was most challenging part.
+- Making responsive is not my cup of tea and today I struggled as well but the good thing is I was able to make the page responsive.
 
-### `npm run eject`
+### Continued development
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+I will work some more thing for example will make all the pages responsive.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Useful resources
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Programming Hero Website
+- www.csstricks.com
+- console.firebase.google.com
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Author
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Dribbble - [Dribbble Link](https://dribbble.com/zillur-rgb)
+- Github- [Github Link]](https://github.com/zillur-rgb)

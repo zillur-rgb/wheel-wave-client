@@ -1,33 +1,32 @@
 import React from "react";
 import { BsGoogle, BsGithub } from "react-icons/bs";
-import { FaFacebookF } from "react-icons/fa";
 import {
-  useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.init";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Spinner } from "react-bootstrap";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [signInWithFacebook, fbUser, fbLoading, fbError] =
-    useSignInWithFacebook(auth);
+
   const [signInWithGithub, gitUser, gitLoading, gitError] =
     useSignInWithGithub(auth);
   const navigate = useNavigate();
 
+  const location = useLocation();
+
   let errorMessage;
-  if (error || fbError || gitError) {
+  if (error || gitError) {
     errorMessage = (
       <>
-        Error: {error?.message} {fbError?.message} {gitError?.message}
+        Error: {error?.message} {gitError?.message}
       </>
     );
   }
 
-  if (loading || fbLoading || gitLoading) {
+  if (loading || gitLoading) {
     return (
       <Spinner animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
@@ -35,8 +34,9 @@ const SocialLogin = () => {
     );
   }
 
-  if (user || fbUser || gitUser) {
-    navigate("/");
+  let from = location.state?.from?.pathname || "/";
+  if (user || gitUser) {
+    navigate(from, { replace: true });
   }
   return (
     <>
@@ -49,13 +49,6 @@ const SocialLogin = () => {
           onClick={() => signInWithGoogle()}
         >
           Sign In using <BsGoogle className="mx-2" />
-        </Button>
-        <Button
-          variant="outline-primary"
-          className="w-100  my-2"
-          onClick={() => signInWithFacebook()}
-        >
-          Sign In using <FaFacebookF className="mx-2" />
         </Button>
         <Button
           variant="outline-dark"
