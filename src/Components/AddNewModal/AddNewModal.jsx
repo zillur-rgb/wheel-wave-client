@@ -30,16 +30,18 @@ const AddNewModal = ({ handleClose, show }) => {
       quantity: +quantity,
       supplier: supplierName,
     };
-    axios.post("http://localhost:5000/api/goods", newProduct).then((res) => {
-      setGoods(goods.concat(res.data));
-      setProductName("");
-      setImageLink("");
-      setDesc("");
-      setPrice("");
-      setQuantity("");
-      setSupplierName("");
-      setSold("");
-    });
+    axios
+      .post("https://desolate-gorge-47759.herokuapp.com/api/goods", newProduct)
+      .then((res) => {
+        setGoods(goods.concat(res.data));
+        setProductName("");
+        setImageLink("");
+        setDesc("");
+        setPrice("");
+        setQuantity("");
+        setSupplierName("");
+        setSold("");
+      });
   };
 
   return (

@@ -29,9 +29,11 @@ const MyItems = () => {
 
   const handleDelete = (id) => {
     if (window.confirm("Do you really want to delete the product?")) {
-      axios.delete(`http://localhost:5000/api/goods/${id}`).then(() => {
-        setGoods(goods.filter((product) => product.id !== id));
-      });
+      axios
+        .delete(`https://desolate-gorge-47759.herokuapp.com/api/goods/${id}`)
+        .then(() => {
+          setGoods(goods.filter((product) => product.id !== id));
+        });
     }
   };
 

@@ -14,17 +14,18 @@ const ManageInventory = () => {
   const [user] = useAuthState(auth);
 
   // useEffect(() => {
-  //   axios.get("http://localhost:5000/api/products").then((res) => {
+  //   axios.get("https://desolate-gorge-47759.herokuapp.com/api/products").then((res) => {
   //     setProducts(res.data);
   //   });
   // }, []);
 
   const handleDelete = (id) => {
-    console.log(id);
     if (window.confirm("Do you really want to delete the product?")) {
-      axios.delete(`http://localhost:5000/api/goods/${id}`).then(() => {
-        setGoods(goods.filter((product) => product.id !== id));
-      });
+      axios
+        .delete(`https://desolate-gorge-47759.herokuapp.com/api/goods/${id}`)
+        .then(() => {
+          setGoods(goods.filter((product) => product.id !== id));
+        });
     }
   };
 

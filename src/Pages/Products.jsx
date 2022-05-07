@@ -13,9 +13,11 @@ const Products = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/goods").then((res) => {
-      setGoods(res.data);
-    });
+    axios
+      .get("https://desolate-gorge-47759.herokuapp.com/api/goods")
+      .then((res) => {
+        setGoods(res.data);
+      });
   }, [setGoods]);
 
   return (

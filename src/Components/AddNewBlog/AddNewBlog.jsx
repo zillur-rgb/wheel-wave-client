@@ -15,7 +15,7 @@ const AddNewBlog = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/blogs")
+      .get("https://desolate-gorge-47759.herokuapp.com/api/blogs")
       .then((res) => setBlogs(res.data));
   }, []);
 
@@ -29,7 +29,7 @@ const AddNewBlog = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/blogs", newBlog)
+      .post("https://desolate-gorge-47759.herokuapp.com/api/blogs", newBlog)
       .then((res) => setBlogs(blogs.concat(res.data)));
 
     setTitle("");

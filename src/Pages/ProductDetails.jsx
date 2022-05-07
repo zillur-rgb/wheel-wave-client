@@ -22,7 +22,10 @@ const ProductDetails = () => {
     };
 
     axios
-      .put(`http://localhost:5000/api/goods/${id}`, updatedProduct)
+      .put(
+        `https://desolate-gorge-47759.herokuapp.com/api/goods/${id}`,
+        updatedProduct
+      )
       .then((res) => {
         setGoods(
           goods.map((product) => (product.id !== id ? product : res.data))
@@ -41,11 +44,16 @@ const ProductDetails = () => {
       quantity: product.quantity + parseInt(stockValue),
     };
 
-    axios.put(`http://localhost:5000/api/goods/${id}`, restock).then((res) => {
-      setGoods(
-        goods.map((product) => (product.id !== id ? product : res.data))
-      );
-    });
+    axios
+      .put(
+        `https://desolate-gorge-47759.herokuapp.com/api/goods/${id}`,
+        restock
+      )
+      .then((res) => {
+        setGoods(
+          goods.map((product) => (product.id !== id ? product : res.data))
+        );
+      });
   };
   return (
     <Container>
