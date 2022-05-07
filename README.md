@@ -3,7 +3,7 @@ Assignment-10 for Programming Hero
 ## Table of contents
 
 - [Overview](#overview)
-  - [ThechallengeandHowitworks](#The-challenge-and-How-it-works)
+  - [The challenge and How it works](#The-challenge-and-How-it-works)
   - [Links](#links)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -13,27 +13,44 @@ Assignment-10 for Programming Hero
 
 ## Overview
 
-The task was to create an app for an Independent Service Provider. I have chosen website for Lawyer and the name I have chosen Law Art.
+The task was to create a Fullstack Warehouse Inventory Management app.
 
-### The challenge and How it works
+### The challenges
 
-- Most time consuming challenge was to find a niche. It took me so long to find my niche.
-- There is a homepage where a navigation bar which will be used for login and also navigate to different route.
-- There is a service section where the services lawyer provides are listed and user can book an appointment for a particular service by clicking on the button.
-- For booking an appointment user must do the sign in process so if user clicks on the book an appointment it will navigate to the signin page unless the user is already signed in.
-- From sign in page if an user doesn't have an account, he/ she can go to signup page and complete the sign up.
-- User can sign in using email and password or using his / her google account.
-- Once he / she signs up, the page will be redirected to the checkout page.
+- The challenge was to make Backend Frontend and also Database where I can do CRUD(Create, Read, Update, Delete) operation.
+- For frontend challenging part was to create functioning authentication system.
+- Besides there are a lot of routes I need to work with and sometimes it was challenging to maintain.
+- But overall it was a fun project. I really enjoyed.
+
+### How it works
+
+- Wheel Wave is a 3rd Party cycle supplier who sells cycle of other companies. So this homepage was mainly for suppliers.
+- Supplier can see all the products including competitors and also they can supply competitor's product as well. Let's assume it's a good world and nobody harms other.
+- If a supplier deliver a product from his or other company's he can update the quantity of the product by clicking delivered.
+- In the Navbar if someone is not logged in he can see Products Catalog menu but if he loggedin then he can see manage inventory menu.
+- When someone hits delivered, the the quantity will be reduced and sold value will be increased. For this, supplier must be logged in.
+- Beside if a supplier wants to restock the product, he can use the little input field and hit restock button. For this, supplier must be logged in.
+- A supplier can delete only his product and also if he wants to he can add new product by clicking Add New Product on the manage inventory page.
+- After loggedin there will be a dropdown menu in the area where his name is displayed. By using dropdown menu supplier can see many other options.
+- If someone is a writer, he can express difference experience by hitting add new blog on the blogs route.
+- Now about authentication, user can sign in using existing email password or using social media link.
+- One can also signup with new information, and after sign up a Email verfication link will be sent to his/ her email.
+- If anyone forgets the password, he can always reset the password.
 
 ### Links
 
-- Github Link: [https://github.com/programming-hero-web-course-4/independent-service-provider-zillur-rgb](https://github.com/programming-hero-web-course-4/independent-service-provider-zillur-rgb)
-- Live URL: [https://law-art-website.web.app/](https://law-art-website.web.app/)
+- Github Link: [https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-zillur-rgb](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-zillur-rgb)
+- Live URL: [https://wheel-wave.web.app/](https://wheel-wave.web.app/)
 
 ### Built with
 
 - ReactJS
+- NodeJs
+- ExpressJs
+- Mongoose
+- MongoDB Atlas
 - Firebase
+- Heroku
 - React Firebase Hooks
 - React Custom Hook
 - React Router
@@ -42,18 +59,20 @@ The task was to create an app for an Independent Service Provider. I have chosen
 
 ### What I learned
 
-- This task was really challenging especially fulfilling requirement was most challenging part.
-- Making responsive is not my cup of tea and today I struggled as well but the good thing is I was able to make the page responsive.
+- It was really fun to hands on a project like a real project I used to do when I was in the design profession.
+- I have learned deploying server to Heroku, Working with Mongoose. Creating my own REST API.
 
 ### Continued development
 
-I will work some more thing for example will make all the pages responsive.
+I will need to work with Json Web Token and also I will add some other functions for the user. Besides, I will try to make it more user friendly.
 
 ### Useful resources
 
 - Programming Hero Website
 - www.csstricks.com
-- console.firebase.google.com
+- www.console.firebase.google.com
+- www.stackoverflow.com
+-
 
 ## Author
 
